@@ -75,7 +75,7 @@ reverse(f2);
 
 
 //EJERCICIO 5
-/* b = (segundos, miliseg) => {
+b = (segundos, miliseg) => {
     setTimeout(() => { console.log(`Imprime ${segundos} después`) }, miliseg);
 }
 async function a() {
@@ -85,7 +85,7 @@ async function a() {
 function doMoreWork() {
     console.log("Imprime sincrono")
 }
-a(); */
+a();
 
 //EJERCICIO6
 var tasks = [
