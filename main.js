@@ -114,3 +114,68 @@ tasks.map(extraerNombre = (valor) => {
     arrTasks2.push(valor.name);
 });
 console.log(arrTasks2);
+
+
+//NIVEL 2 . EJERCICIO 7 Y 8
+
+var errFlag = new Boolean;
+errFlag = false;
+
+tablaMultiplicar = () => {
+    reiniciarHTML();
+    let arrNums = verificarNums();
+    if (!errFlag) {
+        let resultado = calcularTabla(arrNums);
+        imprimirTabla(resultado);
+    } else imprimirTabla();
+};
+
+reiniciarHTML = () => {
+    errFlag = false;
+    let arrInputs = document.getElementsByClassName('input');
+    for (i = 0; i < arrInputs.length; i++) {
+        arrInputs[i].style["border-color"] = "black";
+    }
+}
+
+verificarNums = () => {
+    let arrNums = new Array;
+    let arrInputs = document.getElementsByClassName('input');
+    for (i = 0; i < arrInputs.length; i++) {
+        arrNums[i] = arrInputs[i].value;
+        if (arrNums[i] > 0 && arrNums[i] < 11) {
+            arrNums[i] = Number(arrNums[i]);
+        } else {
+            arrInputs[i].style["border-color"] = "red";
+            errFlag = true;
+        }
+    }
+    return arrNums;
+};
+
+calcularTabla = (arrNums) => {
+    /*     let resultado = `${arrNums[0]} X 1 = ${arrNums[0] * 1}` + '<br>';
+        for (i = 2; i <= arrNums[1]; i++) {
+            resultado += `${arrNums[0]} X ${i} = ${arrNums[0] * i}` + '<br>';
+        } */
+    let resultado = '<table style="width:50%">';
+    for (i = 1; i <= arrNums[1]; i++) {
+        resultado += `<tr><td>${arrNums[0]} X ${i} = ${arrNums[0] * i}</td></tr>`;
+    }
+    resultado += '</table>';
+    return resultado;
+};
+
+imprimirTabla = (resultado = "Error en la entrada, rectifica el campo marcado en rojo") => {
+    let capa = document.getElementById("resultado");
+    let nuevoP = document.createElement("p");
+    nuevoP.setAttribute("id", "tabla");
+    capa.appendChild(nuevoP);
+    document.getElementById('tabla').innerHTML = resultado;
+};
+
+document.getElementById('inputs').addEventListener('submit', function (e) { //Prevent Default para prevenir el borrado del formulario al submit del formulario
+    tablaMultiplicar();
+    e.preventDefault();
+});
+
