@@ -118,7 +118,7 @@ console.log(arrTasks2);
 
 //NIVEL 2 . EJERCICIO 7 Y 8
 
-var errFlag = new Boolean;
+var errFlag = new Boolean;  //variable que controla si hay error en la verificación
 errFlag = false;
 
 tablaMultiplicar = () => {
@@ -130,7 +130,7 @@ tablaMultiplicar = () => {
     } else imprimirTabla();
 };
 
-reiniciarHTML = () => {
+reiniciarHTML = () => { //limpia mensajes de error y variable de control de error
     errFlag = false;
     let arrInputs = document.getElementsByClassName('input');
     for (i = 0; i < arrInputs.length; i++) {
@@ -138,7 +138,7 @@ reiniciarHTML = () => {
     }
 }
 
-verificarNums = () => {
+verificarNums = () => {  //verifica criterios para los números y los pasa a un array que se retorna
     let arrNums = new Array;
     let arrInputs = document.getElementsByClassName('input');
     for (i = 0; i < arrInputs.length; i++) {
@@ -153,11 +153,7 @@ verificarNums = () => {
     return arrNums;
 };
 
-calcularTabla = (arrNums) => {
-    /*     let resultado = `${arrNums[0]} X 1 = ${arrNums[0] * 1}` + '<br>';
-        for (i = 2; i <= arrNums[1]; i++) {
-            resultado += `${arrNums[0]} X ${i} = ${arrNums[0] * i}` + '<br>';
-        } */
+calcularTabla = (arrNums) => { //almacena etiqueta de tabla HTML en variable que retorna, bucle para crear tantas filas como el multiplicador necesite
     let resultado = '<table style="width:50%">';
     for (i = 1; i <= arrNums[1]; i++) {
         resultado += `<tr><td>${arrNums[0]} X ${i} = ${arrNums[0] * i}</td></tr>`;
@@ -166,7 +162,7 @@ calcularTabla = (arrNums) => {
     return resultado;
 };
 
-imprimirTabla = (resultado = "Error en la entrada, rectifica el campo marcado en rojo") => {
+imprimirTabla = (resultado = "Error en la entrada, rectifica el campo marcado en rojo") => { //si no recibe parámetro , imprime mensaje de error, si recibe crea etiqueta p y vuelca la tabla
     let capa = document.getElementById("resultado");
     let nuevoP = document.createElement("p");
     nuevoP.setAttribute("id", "tabla");
