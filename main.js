@@ -6,7 +6,7 @@ multiply(4, 3);
 
 
 //1.2
-let toCelsius = (fahrenheit) => { console.log((5 / 9) * (fahrenheit - 32)) };
+let toCelsius = fahrenheit => { console.log((5 / 9) * (fahrenheit - 32)) };
 toCelsius(20);
 
 
@@ -34,7 +34,7 @@ power(2, 3);
 
 
 //1.5
-let greet = (who) => console.log(`Hello ${who}`);
+let greet = who => console.log(`Hello ${who}`);
 greet('Dani');
 
 
@@ -48,25 +48,20 @@ var users =
 
 
 
-users.map(function (user) {
-    return console.log(user.firstName);
-});
+users.forEach(user => console.log(user.firstName));
 
 
 //EJERCICIO 3
 var epic = ['a', 'long', 'time', 'ago', 'in a', 'galaxy', 'far far', 'away'];
-let frase = epic.reduce(function (frase, palabra) {
-    palabra.toString();
-    frase += " " + palabra;
-    return frase;
-});
+
+let frase = epic.reduce((prev, act) => `${prev} ${act}`);
 console.log(frase);
 
 
 //EJERCICIO 4
 let f1 = "gigolo";
 let f2 = [...f1];
-let reverse = (frase) => {
+let reverse = frase => {
     frase.reverse();
     return console.log(frase);
 }
@@ -110,7 +105,7 @@ tasks.forEach(extraerNombre = (valor) => {
 console.log(arrTasks);
 
 let arrTasks2 = [];
-tasks.map(extraerNombre = (valor) => {
+tasks.forEach(extraerNombre = valor => {
     arrTasks2.push(valor.name);
 });
 console.log(arrTasks2);
